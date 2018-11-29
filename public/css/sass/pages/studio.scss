@@ -1,0 +1,24 @@
+.main-s{
+    height: 95vh;
+    width: 100%;
+   
+    position: relative;
+    padding: 2.5rem;
+    display: table;
+}
+.sidebar{
+
+    width: 10%;
+    height: 95vh;
+    background-color: #e783baa2;
+    float: left;
+    display: table-cell;
+}
+.studio-container{
+    width: 89%;
+    height: 95vh;
+    background-color: #8f9394ab;
+    display: table-cell;
+    float:left;
+    margin-left: 1%;
+}

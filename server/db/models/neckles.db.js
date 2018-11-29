@@ -66,4 +66,4 @@ var neck = mongoose.model('neck', Neck)
 // 	console.log('unable to save todo')
 // });
 
-module.exports = {Neck};
+module.exports = {neck};
