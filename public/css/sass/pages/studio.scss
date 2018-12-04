@@ -22,3 +22,29 @@
     float:left;
     margin-left: 1%;
 }
+.popup-container-neckles{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 90%;
+    width: 90%;
+    background-color: $color-white;
+    box-shadow: 0 2rem 4rem rgba($color-black, .2);
+    border-radius: 3px;
+    display: table;
+    
+    // overflow: hidden;
+
+    // transform: translate(-50%, -50%) scale(.25);
+    // transition: all .5s .2s;
+}
+.item-card{
+    display: table-cell;
+   
+    padding: 2rem;
+    float:left;
+                }
+.img{
+    
+}

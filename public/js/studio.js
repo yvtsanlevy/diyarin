@@ -17,13 +17,114 @@ for (i = 0; i < dropdown.length; i++) {
 
 var image= document.getElementsByClassName("img");
 var conteiner= document.getElementsByClassName("conteiner");
-// formula
+
+var beeds;
+var neckles;
+
+  function loadDoc() {
+     var xhttp = new XMLHttpRequest();
+     xhttp.onreadystatechange = function() {
+    
+         if (this.readyState == 4 && this.status == 200) {
+         
+            beeds =JSON.parse(this.responseText);
+            preload(beeds,beedImages);
+        }
+     };
+     xhttp.open("GET", '/beed', true);
+     xhttp.send(); 
+ }
+  function loadDoc2() {
+     var xhttp = new XMLHttpRequest();
+     xhttp.onreadystatechange = function() {
+    
+         if (this.readyState == 4 && this.status == 200) {
+         
+           neckles =JSON.parse(this.responseText);
+            
+             
+        }
+     };
+     xhttp.open("GET", '/neck', true);
+     xhttp.send(); 
+ }
+
+loadDoc();
+loadDoc2();
+
+function creatNeckles(){
+    for(var i=0;i<neckles.length;i++){
+        for(var j=0;j<neckles[i].beeds.length;j++){
+            for(var k=0;k<beeds.length;k++){
+                if(beeds[k].src==neckles[i].beeds[j]){
+                    var b = beeds[k];
+                    var c =new beed(b.x,b.y,b.w,b.h,b.cy,(b.w)/2,b.src);
+                    neckles[i].beeds[j]=c;
+                }
+            }
+            
+        }
+    }
+}
+var hProportion;
+var wProportion;
+function studioHproportion(){
+    var h =studioContainer.height();
+    hProportion=h/600;
+}
+function studioWproportion(){
+    var w =studioContainer.width();
+    wProportion=w/600;
+}
+
+var popupNeckles= $(".popup-container-neckles");
+var itemCard =$(".item-card");
+var studioContainer=$(".studio-container");
+
+
+creatNeckles();
+studioHproportion();
+studioWproportion();
+appendCard();
+
+function appendCard(){
+    creatNeckles();
+    for(var i=0;i<neckles.length;i++){
+        array=neckles[i].beeds;
+
+        itemCard.append(`<img src ="image/neck/${neckles[i].src}" width=23% higth=25% onclick="clickNeck(${i})"<style padding=1.6%>/>`);
+        // itemCard.css("padding","2rem"); 
+    }
+}
+
+// itemCard.click(`clickNeck(${neckles[i]})`);
+
+function clickNeck(i){
+    studioContainer.empty();
+    creatNeckles();
+    placeBeads(neckles[i].beeds);
+
+}
+
+
+
+
 function f(y, a) {return -(y * y / (a * 4))+350};
 
 var a = 100;
 var w=600;
 
-
+function beed(x, y, w, h,cy,cx, src) {
+  this.x = x;
+  this.y = y;
+  this.w = w; // default width and height?
+  this.h = h;
+  this.cy=cy;
+  this.r=cx;
+  // this.xC= x+w/2;
+  // this.yC= y+h/2;
+  this.src = src;
+}
 
  function drawImage (array){
 
@@ -40,7 +141,7 @@ var w=600;
         img.cx=array[i].r;
         img.setAttribute("id", i+"")
         img.p=array;
-        document.getElementById("im").appendChild(img) ;
+        $(".studio-container").append(img) ;
         img.style.position="absolute";
          img.style.left=array[i].x+"px";
 
@@ -133,8 +234,8 @@ function clear(){
   function placeCentralBead(array){
   
     var c = centralBead(array);
-    var y = f(300 - w * 0.5, a)-c.cy;
-    var x = w/2 - c.r;
+    var y = 0.75*(studioContainer.height());
+    var x = 0.5*(studioContainer.width()) - c.r;
     c.x=x;
     c.y=y;
    return c;
@@ -142,12 +243,12 @@ function clear(){
   }
   
   function placeBeads (array){
-      var i;
+      
       var r = array.slice(array.length/2+1,array.length+1);
       var l = array.slice(0,array.length/2);
       l.reverse();
-      placeR(r[i],i,r,array);
-      placeL(l[i],i,l,array);
+      placeR(r,array);
+      placeL(l,array);
       l.reverse();
        l.push(placeCentralBead(array));
   
@@ -157,7 +258,7 @@ function clear(){
       thisArray=newArray;
     }
   
-  function placeR(item,index,array1,array2){
+  function placeR(array1,array2){
     var c = centralBead(array2);
     var x =300+ findeTriangle2(300,c.r) ;
     var xc1=x+findeTriangle2(x,array1[0].r);
@@ -184,7 +285,7 @@ function clear(){
         }
   }
   
-  function placeL(item,index,array,array2){
+  function placeL(array,array2){
     var c = centralBead(array2);
     var x =300-findeTriangle2(300,c.r) ;
     var xc1=x-findeTriangle2(x,array[0].r);
@@ -378,11 +479,11 @@ function clear(){
       }
     }
   }
-  window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
+//   window.onclick = function(event) {
+//     if (event.target == modal) {
+//         modal.style.display = "none";
+//     }
+// }
 // function clickPos(e){
 // var pos1=e.clientX;
 // var pos2=e.clientY;
