@@ -79,7 +79,10 @@ function studioWproportion(){
 
 var popupNeckles= $(".popup-container-neckles");
 var itemCard =$(".item-card");
+var itemCardBeed =$(".beeds-pop");
 var studioContainer=$(".studio-container");
+var beedsContainer=$(".beeds-container");
+var popup=$("#popup");
 
 
 creatNeckles();
@@ -88,19 +91,34 @@ studioWproportion();
 appendCard();
 
 function appendCard(){
+    itemCard.empty();
     creatNeckles();
     for(var i=0;i<neckles.length;i++){
-        array=neckles[i].beeds;
-
+      
         itemCard.append(`<img src ="image/neck/${neckles[i].src}" width=23% higth=25% onclick="clickNeck(${i})"<style padding=1.6%>/>`);
         // itemCard.css("padding","2rem"); 
     }
 }
+function appendBeedCard(){
+   
+    for(var i=0;i<beeds.length;i++){
+        
+      
+        itemCardBeed.append(`<div id="beeds"><img src ="image/beeds/${beeds[i].src}" width=80%  onclick=""<style padding=1.6%>/>
+        <h2> גודל: ${beeds[i].src}-".jpg"</h2>\
+        <h2> סגנון: ${beeds[i].style}</h2>\
+        <p><button onclick="changeBeed(${i},thisIndex,thisArray)">change bead</button></p>
+        <p><button onclick="addBeedToNeck(${i},thisIndex,thisArray)">Add a bead</button></p></div>
 
+        `);
+        // itemCard.css("padding","2rem"); 
+    }
+}
 // itemCard.click(`clickNeck(${neckles[i]})`);
 
 function clickNeck(i){
-    studioContainer.empty();
+clear();
+itemCard.empty();
     creatNeckles();
     placeBeads(neckles[i].beeds);
 
@@ -133,23 +151,30 @@ function beed(x, y, w, h,cy,cx, src) {
         var img= new Image(array[i].w,array[i].h,array[i].x,array[i].y)
         var img = new Image();   // Create new img element
        
-        img.width=array[i].w;
-        img.height=array[i].h;
+        img.width=1.15*array[i].w;
+        img.height=1.15*array[i].h;
         img.src= array[i].src;
         img.i=i;
-        img.cy=array[i].cy;
-        img.cx=array[i].r;
+        img.cy=1.15*array[i].cy;
+        img.cx=1.15*array[i].r;
         img.setAttribute("id", i+"")
         img.p=array;
-        $(".studio-container").append(img) ;
+        $(".beeds-container").append(img) ;
         img.style.position="absolute";
-         img.style.left=array[i].x+"px";
+         img.style.left=array[i].x+2+"px";
 
-        img.xc=array[i].xC;
+        img.xc=1.15*array[i].xC;
         img.style.top=array[i].y+"px";
          img.style.transform="rotate("+degreToRotate(array,i)*180/Math.PI+"deg)";
-         img.addEventListener('dblclick',clickBeed, false);
-          img.addEventListener('mousedown',mouseDown, false);
+         img.addEventListener('click',clickBeed, false);
+          img.addEventListener('mouseover',
+          function(){
+              img.style.opacity="0.8"}
+          , false);
+          img.addEventListener('mouseout',
+          function(){
+              img.style.opacity="1"}
+          , false);
 }
     // window.addEventListener('mouseup', mouseUp, false);
 
@@ -220,9 +245,8 @@ function mouseDown(e){
 }
 
 function clear(){
-    while (im.hasChildNodes()) {   
-      im.removeChild(im.firstChild);
-  }
+ beedsContainer.empty();
+  
   }
   function centralBead(array){
     if (array.length%2==1){
@@ -234,8 +258,9 @@ function clear(){
   function placeCentralBead(array){
   
     var c = centralBead(array);
-    var y = 0.75*(studioContainer.height());
-    var x = 0.5*(studioContainer.width()) - c.r;
+    var y = f(300 - w * 0.5, a)-c.cy;
+    var x = w/2 - c.r;
+    c.r=c.w/2;
     c.x=x;
     c.y=y;
    return c;
@@ -243,7 +268,9 @@ function clear(){
   }
   
   function placeBeads (array){
-      
+      for(var j=1;j<array.length;j++){
+          array[j].r=array[j].w/2;
+      }
       var r = array.slice(array.length/2+1,array.length+1);
       var l = array.slice(0,array.length/2);
       l.reverse();
@@ -370,7 +397,8 @@ function clear(){
            // else return console.log("not beed clicked");
     }
   }
-  
+  var modal = document.getElementById('myModal');
+  var myDIV = document.getElementById('myDIV');
   function clickBeed(e){
     var b = new  beed(this.x,this.y,this.width,this.height,this.cy,this.cx,this.src);
             replaceBeed=b;
@@ -414,8 +442,8 @@ function clear(){
     };
   }
   
-  function changeBeed(be,index,array){
-  
+  function changeBeed(i,index,array){
+    var be= beeds[i];
     var x;
     x =(array.length-1)/2-index;
      
@@ -428,12 +456,13 @@ function clear(){
     clear();
       // plotWindow();
     placeBeads(newArray);
-     var x = document.getElementById("myDIV");
+     var x = document.getElementById("popup");
      x.style.display = "none"
     thisArray= newArray;
   }
   
-  function addBeedToNeck(be,index,array){
+  function addBeedToNeck(i,index,array){
+      var be= beeds[i];
     var y =(array.length-1)/2
     var x=y-index;
     var b = new  beed(be.x,be.y,be.w,be.h,be.cy,be.r,be.src);
@@ -448,7 +477,7 @@ function clear(){
       clear();
       // plotWindow();
     placeBeads(newArray);
-     var x = document.getElementById("myDIV");
+     var x = document.getElementById("popup");
      x.style.display = "none"
     thisArray= newArray;
   }
@@ -554,5 +583,15 @@ function cards(){
           div.innerHTML=' <p><button onclick="changeBeed(findeBeed(src,beeds),thisIndex,thisArray)">Add a bead</button></p>'
         }
 }
-
+function show() {
+    modal.style.display = "none";
+   
+    appendBeedCard();
+     var x = document.getElementById("popup");
+     if (x.style.display = "none") {
+         x.style.display = "block";
+     } else {
+         x.style.display = "none";
+     }
+ }
   

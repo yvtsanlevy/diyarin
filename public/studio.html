@@ -18,8 +18,8 @@
 					<header class="header">
 						<div class="header__text-box">
 			<h1 class="heading-primary">
-				<span class="heading-primary--main-s">do it yourself</span>
-				
+				<span class="heading-primary--main">do it yourself</span>
+				<span class="heading-primary--sub">הסטודיו לעיצוב תכשיטים</span>
 			</h1>
 
 		</div>
@@ -28,39 +28,15 @@
 
 		<div class="sidebar">
 				<div class="sidenav">
-						<button class="dropdown-btn">צבעים 
-						  <i class="fa fa-caret-down"></i>
-						</button>
-						<div class="dropdown-container">
-						  <a href="#">אדום</a>
-						  <a href="#">כחול</a>
-						  <a href="#">ירוק</a>
-						  <a href="#">חום</a>
-						  <a href="#">צהוב</a>
-						  <a href="#">סגול</a>
-						  <a href="#">אפור</a>
-						</div>
-
-						<button class="dropdown-btn">סגנון 
-								<i class="fa fa-caret-down"></i>
+						<button class="dropdown-btn"onclick= "appendCard()">דוגמאות 
+								
 							  </button>
-							  <div class="dropdown-container">
-								<a href="#">תליון</a>
-								<a href="#">עגול</a>
-								<a href="#">פוןפון</a>
-							  </div>
+						 <button class="dropdown-btn"onclick= "show()">חרוזים 
 						
-							  
-							  <button class="dropdown-btn">גודל 
-									<i class="fa fa-caret-down"></i>
-								  </button>
-								  <div class="dropdown-container">
-									<a href="#">0-5 מ"מ</a>
-									<a href="#">5-10 מ"מ</a>
-									<a href="#">10-15 מ"מ</a>
-									<a href="#">10-25 מ"מ</a>
-								  </div>
-								  
+						  </button>
+					  <button class="dropdown-btn"onclick= "">חוטים 
+							
+							  </button>
 						
 					  </div>
 		</div>
@@ -70,19 +46,82 @@
 
 	<div class="studio-container">
 			<!-- <div class="popup-container-neckles"> -->
-				<div class="item-card">
-					
+				<div class="beeds-container"></div>
+				<div class="item-card"></div>
+				<div class="myModal" id =myModal>
+						<div class="modal-content">
+								<span class="close">&times;</span>
+								<span class=" btn-group" id="btn-group">
+							  <button class="btn btn--white btn--animated" onclick="delet(thisIndex,thisArray)">delet</button>
+							  <button class="btn btn--white btn--animated" onclick="show()"> <a href="#popup">add beed</a></button>
+							  <button class="btn btn--white btn--animated" onclick="show()"><a href="#popup">replace</a></button>  </span>
+							  </div>
+							
+				</div>
+				<div class="studio-footer">
+				<a href="#" class="btn btn--pin"id="p">הוסף לעגלה</a>
+				<a href="#" class="btn btn--pin"id="p">שמור</a>
 			</div>
 		</div>
-			<div class="popup-container-beeds">
-					<div class="item-card-beeds">
+		<div class="popup">
+			<div class="popup-container-beeds" id=myDIV>
+					<div class="item-card-bed">
 						
 					</div>
 				</div>
 			<div id="im" class="img"></div>
-
+         </div>
 	</div>
 
+	<div class="popup" id="popup">
+			<div class="popup__content">
+				<div class="popup__left_s">
+						<div class="sidenav">
+								<button class="dropdown-btn">צבעים 
+										<i class="fa fa-caret-down"></i>
+									  </button>
+									  <div class="dropdown-container">
+										<a href="#">אדום</a>
+										<a href="#">כחול</a>
+										<a href="#">ירוק</a>
+										<a href="#">חום</a>
+										<a href="#">צהוב</a>
+										<a href="#">סגול</a>
+										<a href="#">אפור</a>
+									  </div>
+			  
+									  <button class="dropdown-btn">סגנון 
+											  <i class="fa fa-caret-down"></i>
+											</button>
+											<div class="dropdown-container">
+											  <a href="#">תליון</a>
+											  <a href="#">עגול</a>
+											  <a href="#">פוןפון</a>
+											</div>
+									  
+											
+											<button class="dropdown-btn">גודל 
+												  <i class="fa fa-caret-down"></i>
+												</button>
+												<div class="dropdown-container">
+												  <a href="#">0-5 מ"מ</a>
+												  <a href="#">5-10 מ"מ</a>
+												  <a href="#">10-15 מ"מ</a>
+												  <a href="#">10-25 מ"מ</a>
+												</div>
+												
+									  
+									</div>
+				</div>
+				<div class="popup__right_s">
+					<div class="beeds-pop"></div>
+					<a href="#section-tours" class="popup__close" onclick="show()">&times;</a>
+				
+				
+					
+				</div>
+			</div>
+</div>
 
 </div>
 	<footer class="footer">
@@ -123,7 +162,7 @@
 					
 				</p>
 			</div>
-		</div>
+		
 	</footer>
 
 <script type="text/javascript" src="./js/load.js"></script>

@@ -7,7 +7,9 @@
   left: 0;
   background-color: #111;
   overflow-x: hidden;
+  overflow: auto;
   padding-top: 20px;
+  border-radius: 2rem;
 }
 
 /* Style the sidenav links and the dropdown button */
@@ -39,14 +41,14 @@
 
 /* Add an active class to the active dropdown button */
 .active {
-  background-color: green;
+  background-color: rgb(126, 46, 63);
   color: white;
 }
 
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
 .dropdown-container {
   display: none;
-  background-color: #262626;
+  background-color: rgb(59, 54, 54);
   padding-left: 8px;
 }
 
