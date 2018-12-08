@@ -93,9 +93,10 @@ appendCard();
 function appendCard(){
     itemCard.empty();
     creatNeckles();
+    itemCard.append(`<a href="#section-tours" class="popup__close" onclick="">&times;</a>`)
     for(var i=0;i<neckles.length;i++){
       
-        itemCard.append(`<img src ="image/neck/${neckles[i].src}" width=23% higth=25% onclick="clickNeck(${i})"<style padding=1.6%>/>`);
+        itemCard.append(`<img src ="image/neck/${neckles[i].src}" width=23% higth=25% id="cards" onclick="clickNeck(${i})"<style padding=1.6%>/>`);
         // itemCard.css("padding","2rem"); 
     }
 }
@@ -157,7 +158,7 @@ function beed(x, y, w, h,cy,cx, src) {
         img.i=i;
         img.cy=1.15*array[i].cy;
         img.cx=1.15*array[i].r;
-        img.setAttribute("id", i+"")
+        img.setAttribute("id", "cards")
         img.p=array;
         $(".beeds-container").append(img) ;
         img.style.position="absolute";
@@ -268,6 +269,8 @@ function clear(){
   }
   
   function placeBeads (array){
+      backStack.push(array);
+      thisArray=array;
       for(var j=1;j<array.length;j++){
           array[j].r=array[j].w/2;
       }
@@ -382,6 +385,7 @@ function clear(){
   var replaceBeed;
   var thisArray;
   var thisIndex;
+  var backStack=[];
   function getCordinate(x,y,array){
     for (var i=0;i<array.length;i++){
       if ((x>=array[i].x&&x<=array[i].x+array[i].w)&&(y>=array[i].y&&y<=array[i].y+array[i].h))
@@ -404,7 +408,7 @@ function clear(){
             replaceBeed=b;
             thisIndex=this.i;
             thisArray=this.p;
-            myDIV.style.display="none"
+            // myDIV.style.display="none"
              modal.style.display = "block";
   }
   function getClickPosition(e){
@@ -457,8 +461,10 @@ function clear(){
       // plotWindow();
     placeBeads(newArray);
      var x = document.getElementById("popup");
-     x.style.display = "none"
-    thisArray= newArray;
+     x.style.display = "none";
+    
+  
+  
   }
   
   function addBeedToNeck(i,index,array){
@@ -478,8 +484,10 @@ function clear(){
       // plotWindow();
     placeBeads(newArray);
      var x = document.getElementById("popup");
-     x.style.display = "none"
-    thisArray= newArray;
+     x.style.display = "none";
+     
+    
+    
   }
   function delet(index,array){
     if(index<(array.length-1)/2){
@@ -496,9 +504,23 @@ function clear(){
      clear();
       // plotWindow();
     placeBeads(array);
-   modal.style.display = "none"
+   modal.style.display = "none";
+  
+   
+   
   }
   
+  function backNeck(){
+      if(backStack.length<=1){
+          appendCard();
+      }
+      else{
+          var x=backStack.pop();
+      var newArray=backStack.pop();
+      clear();
+      placeBeads(newArray);
+      thisArray=newArray;}
+  }
   function findeBeed(id,array){
   
     for(var i=0;i<array.length;i++){
@@ -595,3 +617,77 @@ function show() {
      }
  }
   
+ function save(){
+
+
+ }
+ function card(canvas,beeds){
+     this.canvas=canvas;
+     this.beeds=beeds
+ }
+ var cards=[];
+
+ var element = $("#html-content-holder"); // global variable
+ var getCanvas;
+//  $(document).ready(function(){
+    var element = $("#html-content-holder"); // global variable
+    var getCanvas;
+ // global variable
+ 
+     $("#btn-Preview-Image").on('click', function () {
+          html2canvas((element)[0]).then (
+           function (canvas) {
+                 var newArray= thisArray.concat();
+                 var c=new card(canvas,newArray);
+                 cards.push(c);
+                 c=null;
+                 // donload:
+
+                //  getCanvas = canvas;
+                 
+                //  var imgageData = getCanvas.toDataURL("image/png");
+                
+                //  // Now browser starts downloading it instead of just showing it
+                //  var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+                //  $("#btn-Preview-Image").attr("download", "your_neck.png").attr("href", newData);
+                
+              }
+          )})
+    //  });
+    var box=$("#box-des");
+function myDesing(){
+    var con=$("#myDesing");
+    
+    modal.style.display = "none";
+    var x = document.getElementById("myDesing");
+    var y = document.getElementById("box-des");
+    if (x.style.display = "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+    // con.css("visibility","visible")
+    if(cards.length<1){
+        box.append(`<a href="#section-tours" class="popup__close" onclick="">&times;</a>`)
+    $("h1").text("  לא נשמרו עיצובים בעיצובים שלי ")
+    }
+    else{box.empty();
+        box.append(`<a href="#section-tours" class="popup__close" onclick="">&times;</a>`)
+        for(var i=0;i<cards.length;i++)
+        {   var html = cards[i].canvas;
+            html.classList.add("mystyle")
+            // y.innerHTML(html);
+            y.appendChild(html);
+            box.append(`<div class="bt-cards" > 
+            <button class='btn btn-card' onclick="updateNeck(${i})">ערוך</button>
+            <button class='btn btn-card' onclick="">הוסף לעגלה</button></div>
+            `)
+        }
+    }
+}
+function updateNeck(i){
+    var x = document.getElementById("myDesing");
+    x.style.display = "none";
+    clear();
+    placeBeads(cards[i].beeds);
+}

@@ -2,7 +2,9 @@
 var mongoose = require('mongoose');
 
 mongoose.Promise=global.Promise;
-mongoose.connect("mongodb://localhost:27017/appDb" , { useNewUrlParser: true }).then(
+mongoose.connect("mongodb://localhost:27017/appDb" , { useNewUrlParser: true,
+useMongoClient: true 
+}).then(
   (res) => {
    console.log("Connected to Database Successfully.")
   }

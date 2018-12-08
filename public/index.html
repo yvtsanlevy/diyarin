@@ -13,14 +13,20 @@
 		<div class="navigation">
 				<input type="checkbox" class="navigation__checkbox" id="navi-toggle">
 	
-				<label for="navi-toggle" class="navigation__button">
-					<span class="navigation__icon">&nbsp;</span>
-				</label>
-	
+				<label for="navi-toggle" class="navigation__button" onclick="nav()">
+						<span class="navigation__icon">&nbsp;</span> </label> 
+						<script>
+				function nav (){var x=$(".navigation__link");
+				if(x.css("display","none")){x.css("display","block")}
+				else x.css("display","none");
+					
+				}</script>
+					
 				<div class="navigation__background">&nbsp;</div>
 	
 				<nav class="navigation__nav">
 					<ul class="navigation__list">
+						
 						<li class="navigation__item"><a href="studio.html" class="navigation__link"><span></span>הסטודיו</a></li>
 						<li class="navigation__item"><a href="about.html" class="navigation__link"><span></span>הסיפור שלנו</a></li>
 						<li class="navigation__item"><a href="#" class="navigation__link"><span></span>סדנאות</a></li>
@@ -37,11 +43,11 @@
 
 		<div class="header__text-box">
 			<h1 class="heading-primary">
-				<span class="heading-primary--main">do it yourself</span>
-				<span class="heading-primary--sub">סטודיו לעיצוב תכשיטים</span>
+				<span class="heading-primary--main">diyarin</span>
+				<span class="heading-primary--sub">תכשיטים בטעם שלך</span>
 			</h1>
 
-			<a href="studio.html" class="btn btn--white btn--animated">הכל מתחיל כאן</a>
+			<!-- <a href="studio.html" class="btn btn--white btn--animated">הכל מתחיל כאן</a> -->
 		</div>
 	</header>
 
@@ -142,7 +148,7 @@
                             <h3 class="heading-tertiary u-margin-bottom-small">סדנאות תכשיטים</h3>
                             <p class="feature-box__text">
 				ערב יצירה חלומי בו תיצרו לכן את שרשרת חלומותיכן                            </p>
-				<a href="#popup" class="btn btn--white">המשך</a>
+				<a href="#popup1" class="btn btn--white">המשך</a>
                         </div>
                     </div>
                 </div>
@@ -214,7 +220,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="popup" id="popup">
+			<div class="popup" id="popup1">
 					<div class="popup__content">
 						<div class="popup__left">
 							<img src="image/img/1.jpg" alt="Tour photo" class="popup__img">
@@ -240,7 +246,10 @@
 						</div>
 					</div>
 				</div>
-
+				<script type="text/javascript" src="./js/load.js"></script>
+				<script type="text/javascript" src="./js/libs/html2canvas.js"></script>
+				<script type="text/javascript" src="./js/libs/jquery.js"></script>
+				<script type="text/javascript" src="./js/studio.js"></script>
  
 </body>
 </html>

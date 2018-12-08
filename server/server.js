@@ -4,10 +4,15 @@ const http=require('http')
 const bodyParser= require('body-parser');
 const {MongoClient,ObjectID} = require('mongodb');
 const {mongoose}=require('./db/mongoose');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+
 const {beeds} = require('./db/models/beeds.db.js')
 const {neck} = require('./db/models/neckles.db.js')
 const publicPath=path.join(__dirname, '../public');
 
+const db = mongoose.connection
 
 var app = express();
 var server=http.createServer(app);
@@ -58,6 +63,13 @@ app.use(express.static(publicPath+'/image/beeds'));
 app.use(express.static(publicPath+'/image/neck'));
 app.use(express.static(publicPath+'/css'));
 app.use(express.static(publicPath+'/image/img'));
+app.use(cookieParser());
+app.use(session({
+    secret: 'my-secret',
+    resave: false,
+    saveUninitialized: true,
+    store: new MongoStore({ mongooseConnection: db })
+}));
 
 // beeds.create({w:25,h:25,src:'10x10.jpg'}, function (err, small) {
 //   if (err) return console.log(err);

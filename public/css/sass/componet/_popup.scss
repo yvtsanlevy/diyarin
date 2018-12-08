@@ -15,6 +15,7 @@
       backdrop-filter: blur(10px);
       background-color: rgba($color-black, .3);
   }
+  
 
   &__content {
       @include absCenter;
@@ -105,7 +106,7 @@
       &:link,
       &:visited {
           color: $color-grey-dark;
-          position: absolute;
+          position: fixed;
           top: 2.5rem;
           right: 2.5rem;
           font-size: 3rem;

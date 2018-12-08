@@ -77,17 +77,24 @@
     display: table-cell;
    
     padding: 2rem;
+    margin-right: 3rem;
     float:left;
-    z-index: 2;
-    //  background-color: rgba($color-black, .8);
-  
+    position: absolute;
+    z-index: 9999;
+    background-image:linear-gradient(to right bottom, rgba(213, 111, 159, 0.6),
+    rgba(209, 38, 52, 0.6));
+    flex-wrap: wrap;
+    border-radius: 2rem;
+      overflow: auto;  
                 }
+
  .item-card-bed {
     display: table-cell;
    
     padding: 2rem;
     float:left;
     z-index: 1;
+  
 
 }
 .beeds-pop{
@@ -103,6 +110,7 @@
  border-radius: 2rem;
    overflow: auto;
 
+
 }
 .myModal{
     width: 50%;
@@ -110,17 +118,19 @@
     left: 34%;
     top: 5%;
     display: none;
+    visibility: visible;
     position: absolute; /* Stay in place */
     z-index: 1; /* Sit on top */
     // background-color: rgb(0,0,0); /* Fallback color */
     // background-color: rgba(0,0,0,0.4);
 }
 .modal-content{
-    background-color:linear-gradient(to right bottom, rgba(213, 111, 159, 0.6),
-     rgba(209, 38, 52, 0.6));
+    background: none;
+    
     margin: auto;
     padding: 20px;
-    
+    border: none;
+    -webkit-box-shadow:none;
     width: 90%;
 
 }
@@ -139,3 +149,42 @@
 #popup{
     display: none;
 }
+#myDesing{
+    display: none; 
+    font-size: 2rem;
+    color: black;
+    text-align: center;
+}
+#box-des{
+    position: absolute;
+    border-radius: 2rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 90%;
+    width: 70%;
+    box-shadow: 0 2rem 4rem rgba($color-black, .2);
+}
+.mystyle{
+    height: 80% !important;
+    width: 60% !important;
+    max-height: 85%;
+    border-radius: 60%;
+   
+}
+.bt-cards{
+// width: 60%;
+// background-color: white
+}
+
+    #cards:hover {
+        transform: translateY(-1rem);
+        opacity: 0.85;
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+        #cards:hover::after {
+          transform: scaleX(1.4) scaleY(1.6);
+          opacity: 0; }
+
+ .glyphicon .glyphicon-share-alt {
+     width: 150%;
+ }        

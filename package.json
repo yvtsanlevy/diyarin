@@ -6,16 +6,19 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js",
-    "compile:sass":"node-sass  public/css/sass/main.scss public/css/index.css -w"
+    "compile:sass": "node-sass  public/css/sass/main.scss public/css/index.css -w"
   },
   "author": "yvtsanLevy",
   "license": "ISC",
   "dependencies": {
+    "connect-mongo": "^2.0.3",
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.4",
+    "express-session": "^1.15.6",
     "mongodb": "^3.1.10",
     "mongoose": "^5.3.13"
-    
   },
-  "devDependencies": 
-  {"node-sass": "^4.10.0"}
+  "devDependencies": {
+    "node-sass": "^4.10.0"
+  }
 }

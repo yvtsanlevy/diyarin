@@ -1,0 +1,25 @@
+.icon{
+    background-color: #fff;
+    height: 7rem;
+    width: 7rem;
+    position: fixed;
+    right: 6rem;
+    border-radius: 50%;
+    z-index: 2000;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+    text-align: center;
+    cursor: pointer;
+}
+.icon:hover{
+    transform: translateY(0.5rem);
+  
+}
+
+.icon-paintlet{
+top: 24rem;
+}
+
+.icon-shop{
+    top: 15rem;
+    
+}

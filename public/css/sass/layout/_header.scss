@@ -1,19 +1,36 @@
 .header {
-    height: 95vh;
-    background-image: linear-gradient(to right bottom, rgba(213, 111, 159, 0.6), rgba(209, 38, 52, 0.6)), url(../image/img/1.jpg);
+    height: 90vh;
+    background-image: linear-gradient(to right bottom, rgba(213, 111, 159, 0.6), rgba(209, 38, 52, 0.6)), url(../image/img/index-h.jpg);
     background-size: cover;
     background-position: top;
     position: relative;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%); }
+    .header-store{
+      height: 90vh;
+      background-image: linear-gradient(to right bottom, rgba(200, 234, 74, 0.6), rgba(206, 135, 6, 0.6)), url(../image/img/store-h.jpg);
+      background-size: cover;
+      background-position: top;
+      position: relative;
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%); }
+      .header-studio{
+        height: 90vh;
+        background-image: linear-gradient(to right bottom, rgba(11, 231, 30, 0.6), rgba(132, 237, 245, 0.6)), url(../image/img/studio-h.jpg);
+        background-size: cover;
+        background-position: top;
+        position: relative;
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%); }
     .header__logo-box {
-      position: absolute;
+      position: relative;
       top: 4rem;
       left: 4rem; }
     .header__logo {
       height: 3.5rem; }
+
     .header__text-box {
-      position: absolute;
+     position: relative;
       top: 40%;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -61,16 +78,4 @@
             position: relative;
             -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
             clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); } */
-            .header__logo-box {
-              position: absolute;
-              top: 4rem;
-              left: 4rem; }
-            .header__logo {
-              height: 3.5rem; }
-            .header__text-box {
-              position: absolute;
-              top: 40%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              text-align: center; }
-          
+           

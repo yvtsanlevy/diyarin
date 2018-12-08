@@ -6,16 +6,47 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+	
 	<link type="text/css" rel="stylesheet" href="/index.css">
 	
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"></script>
 	<title>diyarin-סטודיו לעיצוב תכשיטים</title>
 </head>
 <body>
 
-		
+		<div class="navigation">
+				<input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+	
+				<label for="navi-toggle" class="navigation__button" onclick="nav()">
+						<span class="navigation__icon">&nbsp;</span> </label> 
+						<script>
+				function nav (){var x=$(".navigation__link");
+				if(x.css("display","none")){x.css("display","block")}
+				else x.css("display","none");
 					
-					<header class="header">
+				}</script>
+					
+				
+	
+				<div class="navigation__background">&nbsp;</div>
+	
+				<nav class="navigation__nav">
+					<ul class="navigation__list">
+							<li class="navigation__item"><a href="index.html" class="navigation__link"><span></span>דף הבית</a></li>
+						<li class="navigation__item"><a href="about.html" class="navigation__link"><span></span>הסיפור שלנו</a></li>
+						<li class="navigation__item"><a href="#" class="navigation__link"><span></span>סדנאות</a></li>
+						<li class="navigation__item"><a href="store.html" class="navigation__link"><span></span>החנות</a></li>
+						<li class="navigation__item"><a href="#" class="navigation__link"><span></span>צור קשר</a></li>
+						</ul>
+				</nav>
+			</div>
+			<div class="icons">
+				<a href="store.html">	<img class="icon icon-shop" src="image/img/icon-shop.png" ></a>
+				<a href="#myDesing">	<img class="icon icon-paintlet" src="image/img/icon-paint.png"onclick="myDesing()" ></a>
+			</div>
+					
+					<header class="header-studio">
 						<div class="header__text-box">
 			<h1 class="heading-primary">
 				<span class="heading-primary--main">do it yourself</span>
@@ -28,13 +59,13 @@
 
 		<div class="sidebar">
 				<div class="sidenav">
-						<button class="dropdown-btn"onclick= "appendCard()">דוגמאות 
+						<button class="btn btn__black"onclick= "appendCard()">דוגמאות 
 								
 							  </button>
-						 <button class="dropdown-btn"onclick= "show()">חרוזים 
+						 <button class="btn btn__black"onclick= "show()">חרוזים 
 						
 						  </button>
-					  <button class="dropdown-btn"onclick= "">חוטים 
+					  <button class="btn btn__black"onclick= "">חוטים 
 							
 							  </button>
 						
@@ -44,33 +75,39 @@
 
 
 
-	<div class="studio-container">
-			<!-- <div class="popup-container-neckles"> -->
-				<div class="beeds-container"></div>
-				<div class="item-card"></div>
+	<div class="studio-container" id="html-content-holder">
+			
+					
+							  <div class="beeds-container"><a href="#section-tours" class="popup__close" >&times;</a>
+							</div>
+				<div class="item-card">
+						<a href="#section-tours" class="popup__close" onclick="">&times;</a>	
+				</div>
 				<div class="myModal" id =myModal>
 						<div class="modal-content">
 								<span class="close">&times;</span>
 								<span class=" btn-group" id="btn-group">
-							  <button class="btn btn--white btn--animated" onclick="delet(thisIndex,thisArray)">delet</button>
-							  <button class="btn btn--white btn--animated" onclick="show()"> <a href="#popup">add beed</a></button>
-							  <button class="btn btn--white btn--animated" onclick="show()"><a href="#popup">replace</a></button>  </span>
+							  <a class="btn btn--white btn--animated" onclick="delet(thisIndex,thisArray)">delet</a>
+							   <a href="#popup"class="btn btn--white btn--animated" onclick="show()">add beed</a>
+							  <a href="#popup"class="btn btn--white btn--animated" onclick="show()">replace</a> </span>
 							  </div>
 							
 				</div>
 				<div class="studio-footer">
-				<a href="#" class="btn btn--pin"id="p">הוסף לעגלה</a>
-				<a href="#" class="btn btn--pin"id="p">שמור</a>
+				<a  class="btn btn--pin"id="p">הוסף לעגלה</a>
+				<a  id="btn-Preview-Image" class="btn btn--pin"> שמור בעיצובים שלי</a>
+				<img class="btn btn__back" src="image/img/icon.png" onclick="backNeck()">
 			</div>
 		</div>
-		<div class="popup">
+		<!-- <div class="popup">
 			<div class="popup-container-beeds" id=myDIV>
 					<div class="item-card-bed">
 						
 					</div>
 				</div>
-			<div id="im" class="img"></div>
-         </div>
+		
+		 </div> -->
+	
 	</div>
 
 	<div class="popup" id="popup">
@@ -113,7 +150,7 @@
 									  
 									</div>
 				</div>
-				<div class="popup__right_s">
+				<div class="popup__right_s" id ="studio-beeds">
 					<div class="beeds-pop"></div>
 					<a href="#section-tours" class="popup__close" onclick="show()">&times;</a>
 				
@@ -121,6 +158,23 @@
 					
 				</div>
 			</div>
+</div>
+<div class="popup" id="myDesing">
+		<div class="popup__content">
+			<div class="popup__left_s">
+					
+								  
+								</div>
+			</div>
+			<div class="popup__right_s" id ="box-des">
+				<h1></h1>
+			
+				
+			
+			
+				
+			</div>
+		</div>
 </div>
 
 </div>
@@ -166,7 +220,7 @@
 	</footer>
 
 <script type="text/javascript" src="./js/load.js"></script>
-<script type="text/javascript" src="./js/libs/mustache.js"></script>
+<script type="text/javascript" src="./js/libs/html2canvas.js"></script>
 <script type="text/javascript" src="./js/libs/jquery.js"></script>
 <script type="text/javascript" src="./js/studio.js"></script>
 </body>

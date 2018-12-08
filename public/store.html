@@ -1,24 +1,62 @@
 <!DOCTYPE html>
 <html>
+		<script type="text/javascript" src="./js/load.js"></script>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalabla=no">
-	<title></title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="/index.css">
+	<title>diyarin-סטודיו לעיצוב תכשיטים</title>
 </head>
 <body>
 
-		<header>
-			<nav>
-				<ul>
+		<div class="navigation">
+				<input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+	
+				<label for="navi-toggle" class="navigation__button" onclick="nav()">
+						<span class="navigation__icon">&nbsp;</span> </label> 
+						<script>
+				function nav (){var x=$(".navigation__link");
+				if(x.css("display","none")){x.css("display","block")}
+				else x.css("display","none");
 					
-	   <div class= "menu" > 
-<li><a href="studio.html">סטודיו</a><br></li>    
-<li><a href="about.html">אורות</a><br></li>
-<li><a href="index.html">דף הבית </a><br></li>
-<li><a href="store.html">חנות</a><br></li>
+				}</script>
+					
+				
+	
+				<div class="navigation__background">&nbsp;</div>
+	
+				<nav class="navigation__nav">
+					<ul class="navigation__list">
+							<li class="navigation__item"><a href="index.html" class="navigation__link"><span></span>דף הבית</a></li>
+						<li class="navigation__item"><a href="studio.html" class="navigation__link"><span></span>הסטודיו</a></li>
+						<li class="navigation__item"><a href="about.html" class="navigation__link"><span></span>הסיפור שלנו</a></li>
+						<li class="navigation__item"><a href="#" class="navigation__link"><span></span>סדנאות</a></li>
+						<li class="navigation__item"><a href="#" class="navigation__link"><span></span>צור קשר</a></li>
+						</ul>
+				</nav>
+			</div>
+			<div class="icons">
+				<a href="store.html">	<img class="icon icon-shop" src="image/img/icon-shop.png" ></a>
+				<!-- <a href="#myDesing">	<img class="icon icon-paintlet" src="image/img/icon-paint.png"onclick="myDesing()" ></a> -->
+			</div>
+					
+					<header class="header-store">
+						<div class="header__text-box">
+			<h1 class="heading-primary">
+				<span class="heading-primary--main">do it yourself</span>
+				<span class="heading-primary--sub">חנות התכשיטים של אוריה לוי</span>
+			</h1>
 
-</div>
-</ul>
+		</div>
+	</header>
+<section class="products">
 
+	</section>
+	<script type="text/javascript" src="./js/load.js"></script>
+	<script type="text/javascript" src="./js/libs/jquery.js"></script>
+	<script type="text/javascript" src="./js/studio.js"></script>
+    <script type="text/javascript" src="./js/store.js"></script>
 </body>
 </html>
