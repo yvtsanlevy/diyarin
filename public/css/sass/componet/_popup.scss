@@ -108,12 +108,13 @@
           color: $color-grey-dark;
           position: fixed;
           top: 2.5rem;
-          right: 2.5rem;
+          right: 2rem;
           font-size: 3rem;
           text-decoration: none;
           display: inline-block;
           transition: all .2s;
           line-height: 1;
+          z-index: 9999;
       }
 
       &:hover {

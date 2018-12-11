@@ -53,6 +53,7 @@ loadDoc();
 loadDoc2();
 
 function creatNeckles(){
+  loadDoc2();
     for(var i=0;i<neckles.length;i++){
         for(var j=0;j<neckles[i].beeds.length;j++){
             for(var k=0;k<beeds.length;k++){
@@ -96,7 +97,7 @@ function appendCard(){
     itemCard.append(`<a href="#section-tours" class="popup__close" onclick="">&times;</a>`)
     for(var i=0;i<neckles.length;i++){
       
-        itemCard.append(`<img src ="image/neck/${neckles[i].src}" width=23% higth=25% id="cards" onclick="clickNeck(${i})"<style padding=1.6%>/>`);
+        itemCard.append(`<img src ="image/neck/${neckles[i].src}" width=23% higth=25% class="hover" id="myDesingArray" onclick="clickNeck(${i})"<style padding=1.6%>/>`);
         // itemCard.css("padding","2rem"); 
     }
 }
@@ -106,7 +107,7 @@ function appendBeedCard(){
         
       
         itemCardBeed.append(`<div id="beeds"><img src ="image/beeds/${beeds[i].src}" width=80%  onclick=""<style padding=1.6%>/>
-        <h2> גודל: ${beeds[i].src}-".jpg"</h2>\
+        <h2> גודל: ${beeds[i].src}</h2>\
         <h2> סגנון: ${beeds[i].style}</h2>\
         <p><button onclick="changeBeed(${i},thisIndex,thisArray)">change bead</button></p>
         <p><button onclick="addBeedToNeck(${i},thisIndex,thisArray)">Add a bead</button></p></div>
@@ -158,7 +159,8 @@ function beed(x, y, w, h,cy,cx, src) {
         img.i=i;
         img.cy=1.15*array[i].cy;
         img.cx=1.15*array[i].r;
-        img.setAttribute("id", "cards")
+        img.setAttribute("id", "myDesingArray")
+        img.setAttribute("class", "hover")
         img.p=array;
         $(".beeds-container").append(img) ;
         img.style.position="absolute";
@@ -591,7 +593,7 @@ function start(){
 
   }
 
-function cards(){
+function myDesingArray(){
     for(var i=0;i<beeds.length;i++){
           var s = beeds[i].src;
           var w = beeds[i].w;
@@ -623,9 +625,10 @@ function show() {
  }
  function card(canvas,beeds){
      this.canvas=canvas;
-     this.beeds=beeds
+     this.beeds=beeds;
+     this.src=canvas.toDataURL();
  }
- var cards=[];
+ var myDesingArray=[];
 
  var element = $("#html-content-holder"); // global variable
  var getCanvas;
@@ -639,21 +642,23 @@ function show() {
            function (canvas) {
                  var newArray= thisArray.concat();
                  var c=new card(canvas,newArray);
-                 cards.push(c);
-                 c=null;
-                 // donload:
-
-                //  getCanvas = canvas;
-                 
-                //  var imgageData = getCanvas.toDataURL("image/png");
-                
-                //  // Now browser starts downloading it instead of just showing it
-                //  var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
-                //  $("#btn-Preview-Image").attr("download", "your_neck.png").attr("href", newData);
-                
+                 myDesingArray.push(c);
+           
               }
           )})
-    //  });
+
+          $("#addCard").on('click', function () {
+            html2canvas((element)[0]).then (
+             function (canvas) {
+                   var newArray= thisArray.concat();
+                   var c=new card(canvas,newArray);
+                   addToCards(c);
+             
+                }
+            )})
+    
+
+
     var box=$("#box-des");
 function myDesing(){
     var con=$("#myDesing");
@@ -667,20 +672,20 @@ function myDesing(){
         x.style.display = "none";
     }
     // con.css("visibility","visible")
-    if(cards.length<1){
+    if(myDesingArray.length<1){
         box.append(`<a href="#section-tours" class="popup__close" onclick="">&times;</a>`)
     $("h1").text("  לא נשמרו עיצובים בעיצובים שלי ")
     }
     else{box.empty();
         box.append(`<a href="#section-tours" class="popup__close" onclick="">&times;</a>`)
-        for(var i=0;i<cards.length;i++)
-        {   var html = cards[i].canvas;
+        for(var i=0;i<myDesingArray.length;i++)
+        {   var html = myDesingArray[i].canvas;
             html.classList.add("mystyle")
             // y.innerHTML(html);
             y.appendChild(html);
             box.append(`<div class="bt-cards" > 
             <button class='btn btn-card' onclick="updateNeck(${i})">ערוך</button>
-            <button class='btn btn-card' onclick="">הוסף לעגלה</button></div>
+            <button class='btn btn-card' onclick="addCard(${i})">הוסף לעגלה</button></div>
             `)
         }
     }
@@ -689,5 +694,8 @@ function updateNeck(i){
     var x = document.getElementById("myDesing");
     x.style.display = "none";
     clear();
-    placeBeads(cards[i].beeds);
+    placeBeads(myDesingArray[i].beeds);
 }
+ function addCard(i){
+  addToCards(myDesingArray[i])
+ }

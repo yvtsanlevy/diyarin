@@ -146,6 +146,13 @@
     height: 40%;
     display: block;
 }
+.hover:hover {
+    transform: translateY(-1rem);
+    opacity: 0.85;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+    .hover:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; }
 #popup{
     display: none;
 }

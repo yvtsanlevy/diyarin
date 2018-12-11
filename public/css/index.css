@@ -117,6 +117,22 @@ body {
 a {
   color: none; }
 
+/* width */
+::-webkit-scrollbar {
+  width: 10px; }
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; }
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; }
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; }
+
 .section-about {
   background-color: #f7f7f7;
   padding: 25rem 0;
@@ -281,6 +297,15 @@ a {
   height: 40%;
   display: block; }
 
+.hover:hover {
+  transform: translateY(-1rem);
+  opacity: 0.85;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+.hover:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0; }
+
 #popup {
   display: none; }
 
@@ -393,6 +418,148 @@ a {
     padding: 1.8rem 3rem;
     cursor: pointer;
     transition: all .2s; }
+
+.cards-container {
+  position: absolute;
+  border-radius: 2rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 90%;
+  width: 80%;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+  background-image: linear-gradient(to right bottom, #eca109, #e7dada);
+  overflow: auto;
+  transition: all .5s .2s;
+  grid-column: center-start / center-end;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  grid-gap: 7rem; }
+
+.bannerCards {
+  position: fixed;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  grid-gap: 7rem;
+  z-index: 20003;
+  top: 0rem;
+  left: 10%;
+  width: 80%;
+  font-size: 1.6rem;
+  text-align: center;
+  padding: 1.25rem;
+  background-image: linear-gradient(to right bottom, #fd0303, #e7dada);
+  color: #fff;
+  font-weight: 400; }
+
+.sum1 {
+  grid-row: 1 / 2;
+  justify-self: center;
+  align-self: end; }
+
+.sum2 {
+  grid-row: 1 / 2;
+  grid-column: 3 / 3;
+  justify-self: center;
+  align-self: end; }
+
+.banner__btn {
+  background-color: #c69963;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  padding: 1.8rem 3rem;
+  cursor: pointer;
+  transition: all .2s;
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+  justify-self: center;
+  align-self: end; }
+
+.row {
+  display: -ms-flexbox;
+  /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap;
+  /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px; }
+
+.col-25 {
+  -ms-flex: 25%;
+  /* IE10 */
+  flex: 25%; }
+
+.col-50 {
+  -ms-flex: 50%;
+  /* IE10 */
+  flex: 50%; }
+
+.col-75 {
+  -ms-flex: 75%;
+  /* IE10 */
+  flex: 75%; }
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px; }
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px; }
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px; }
+
+label {
+  margin-bottom: 10px;
+  display: block; }
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px; }
+
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px; }
+
+.btn:hover {
+  background-color: #45a049; }
+
+a {
+  color: #2196F3; }
+
+hr {
+  border: 1px solid lightgrey; }
+
+span.price {
+  float: right;
+  color: grey; }
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse; }
+  .col-25 {
+    margin-bottom: 20px; } }
 
 /*
 0 - 600px:      Phone
@@ -978,12 +1145,13 @@ ORDER: Base + typography > general layout + grid > page layout > components
     color: #353030;
     position: fixed;
     top: 2.5rem;
-    right: 2.5rem;
+    right: 2rem;
     font-size: 3rem;
     text-decoration: none;
     display: inline-block;
     transition: all .2s;
-    line-height: 1; }
+    line-height: 1;
+    z-index: 9999; }
   .popup__close:hover {
     color: #c69963; }
 

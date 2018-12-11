@@ -1,7 +1,7 @@
 
  	var beeds;
    var neckles;
-   var images;
+  
  	function loadDoc() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
@@ -29,28 +29,14 @@
         xhttp.open("GET", '/neck', true);
         xhttp.send(); 
     }
-    function loadDoc3() {
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-     
-          if (this.readyState == 4 && this.status == 200) {
-          
-            images =JSON.parse(this.responseText);
-              preload(images,img);
-              
-         }
-      };
-      xhttp.open("GET", '/images', true);
-      xhttp.send(); 
-  }
+
 loadDoc();
 loadDoc2();
-loadDoc3();
+
 
   var beedImages = new Array();
   var neckImages = new Array();
- 
-  var img=new Array();
+
       function preload(array1,array2) {
         for (i = 0; i < array1.length; i++) {
           array2[i] = new Image()
@@ -61,5 +47,37 @@ loadDoc3();
         }
       }
 
-      
-    
+      // function addToCards(obj){
+      //   var xhttp = new XMLHttpRequest();
+      //   var obje=JSON.stringify(obj)
+      //   xhttp.open("POST", '/addToCards', true);
+      //   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      //   xhttp.send(obje);
+      // }
+      function addToCards(obj){
+        var obje=JSON.stringify(obj)
+      $.ajax({
+          type: "POST",
+          url: "/addToCards",
+          processData: false,
+          contentType: 'application/json',
+          data: obje,
+          success: function(r) {
+             console.log(r);
+          }
+      });
+    }
+
+    function getCards(){
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+     
+          if (this.readyState == 4 && this.status == 200) {
+          
+            cards =JSON.parse(this.responseText);
+            
+         }
+      };
+      xhttp.open("GET", '/getCards', true);
+      xhttp.send(); 
+  }
