@@ -15,7 +15,7 @@ this.price=price;
 }
  getCards();
  var sum=0;
-
+ 
 //  if(cards.length<3){
 //     for(var i=0;i<cards.length;i++){
 //         sum+=cards[i].price;}

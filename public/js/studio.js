@@ -102,10 +102,10 @@ function appendCard(){
     }
 }
 function appendBeedCard(){
+  itemCardBeed.empty();
    
     for(var i=0;i<beeds.length;i++){
         
-      
         itemCardBeed.append(`<div id="beeds"><img src ="image/beeds/${beeds[i].src}" width=80%  onclick=""<style padding=1.6%>/>
         <h2> גודל: ${beeds[i].src}</h2>\
         <h2> סגנון: ${beeds[i].style}</h2>\
@@ -170,19 +170,24 @@ function beed(x, y, w, h,cy,cx, src) {
         img.style.top=array[i].y+"px";
          img.style.transform="rotate("+degreToRotate(array,i)*180/Math.PI+"deg)";
          img.addEventListener('click',clickBeed, false);
-          img.addEventListener('mouseover',
-          function(){
-              img.style.opacity="0.8"}
-          , false);
-          img.addEventListener('mouseout',
-          function(){
-              img.style.opacity="1"}
-          , false);
+          // img.addEventListener('mouseover',
+          // function(){
+          //     img.style.opacity="0.8"}
+          // , false);
+          // img.addEventListener('mouseout',
+          // function(){
+          //     img.style.opacity="1"}
+          // , false);
+          // img.addEventListener('mousedown',mouseDown, false);
 }
+var cont=document.getElementsByClassName('studio-container');
+// cont.addEventListener('mouseup', mouseUp, false);
+// studioContainer.click(mouseUp)
     // window.addEventListener('mouseup', mouseUp, false);
 
 }
 
+var dw =document.documentElement.clientWidth/4;
 function mouseUp()
 {
     window.removeEventListener('mousemove', divMove, true);
@@ -194,16 +199,21 @@ function mouseDown(e){
     div.style.position = 'absolute';
   div.style.zIndex = 1000;
   // conteiner.append(div);
-    moveAt(event.pageX, event.pageY);
+    moveAt(event.clientX, event.clientY);
 
-  // centers the ball at (pageX, pageY) coordinates
-  function moveAt(pageX, pageY) {
-    div.style.left = pageX - shiftX + 'px';
-    div.style.top = pageY - shiftY + 'px';
+  // centers the ball at (clientX, clientY) coordinates
+  function moveAt(clientX, clientY) {
+    div.style.left = clientX - shiftX  - dw + 'px';
+    console.log(div.style.left)
+    console.log(clientX,"clientX")
+    console.log(dw,"dw")
+    
+    div.style.top = clientY - shiftY + 'px';
+    console.log(div.style.top)
   }
 
   function onMouseMove(event) {
-    moveAt(event.pageX, event.pageY);
+    moveAt(event.clientX, event.clientY);
   }
 
   // (3) move the ball on mousemove
@@ -429,7 +439,7 @@ function clear(){
    
     while (el) {
       if (el.tagName == "BODY") {
-        // deal with browser quirks with body/window/document and page scroll
+        // deal with browser quirks with body/window/document and client scroll
         var xScrollPos = el.scrollLeft || document.documentElement.scrollLeft;
         var yScrollPos = el.scrollTop || document.documentElement.scrollTop;
    
@@ -699,3 +709,25 @@ function updateNeck(i){
  function addCard(i){
   addToCards(myDesingArray[i])
  }
+
+
+ function openCity(evt, cityName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}

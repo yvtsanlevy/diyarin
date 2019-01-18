@@ -9,24 +9,51 @@
 	<link type="text/css" rel="stylesheet" href="/index.css">
 	<title>diyarin-סטודיו לעיצוב תכשיטים</title>
 </head>
+<div class="navigation">
+        <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
 
+        <label for="navi-toggle" class="navigation__button" onclick="nav()">
+                <span class="navigation__icon">&nbsp;</span> </label> 
+                <script>
+        function nav (){var x=$(".navigation__link");
+        if(x.css("display","none")){x.css("display","block")}
+        else x.css("display","none");
+            
+        }</script>
+            
+        
+
+        <div class="navigation__background">&nbsp;</div>
+
+        <nav class="navigation__nav">
+            <ul class="navigation__list">
+                    <li class="navigation__item"><a href="index.html" class="navigation__link"><span></span>דף הבית</a></li>
+                <li class="navigation__item"><a href="studio.html" class="navigation__link"><span></span>הסטודיו</a></li>
+                <li class="navigation__item"><a href="about.html" class="navigation__link"><span></span>הסיפור שלנו</a></li>
+                <li class="navigation__item"><a href="#" class="navigation__link"><span></span>סדנאות</a></li>
+                <li class="navigation__item"><a href="#" class="navigation__link"><span></span>צור קשר</a></li>
+                </ul>
+        </nav>
+    </div>
+    <div class="icons">
+        <a href="store.html#popupS"onclick="showCards()
+        ">	<img class="icon icon-shop" src="image/img/icon-shop.png" ></a>
+        <!-- <a href="#myDesing">	<img class="icon icon-paintlet" src="image/img/icon-paint.png"onclick="myDesing()" ></a> -->
+    </div>
+            
+            <header class="header-store">
+                <div class="header__text-box">
+    <h1 class="heading-primary">
+        <span class="heading-primary--main">do it yourself</span>
+        <span class="heading-primary--sub">חנות התכשיטים של אוריה לוי</span>
+    </h1>
+
+</div>
+</header>
 <body>
         <div class="col-25">
                 <div class="container">
-                  <h4>עגלה 
-                    <span class="price" style="color:black">
-                      <i class="fa fa-shopping-cart"></i> 
-                      <b>4</b>
-                    </span>
-                  </h4>
-                  <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-                  <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-                  <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-                  <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-                  <hr>
-                  <p>סכום לתשלום <span class="price" style="color:black"><b>30</b></span></p>
-                </div>
-              </div>
+                 
         <div class="row">
                 <div class="col-75">
                   <div class="container">
