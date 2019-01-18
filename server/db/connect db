@@ -1,0 +1,7 @@
+:\Program Files\MongoDB\Server\4.0\bin>mongod.exe --dbpath Users/Owner/mongo-data
+
+C:\Program Files\MongoDB\Server\4.0\bin>mongod.exe --dbpath /Users/Owner/mongo-data
+
+cd Program Files\MongoDB\Server\4.0\bin>
+
+mongod.exe --dbpath /Users/Owner/mongo-data

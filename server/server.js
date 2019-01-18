@@ -95,6 +95,25 @@ app.post('/addToCards', (req, res)=> {
    
  })
 
+ app.post('/addToBeeds', (req, res)=> { 
+
+  // var card = JSON.parse(req.body);
+  beeds.create({
+    
+    src:req.body.name,
+    w:((req.body.w)*2.5),
+    h:((req.body.h)*2.5),
+    cy:((req.body.cy)*2.5),
+    style:req.body.style,
+    color:req.body.color,
+    quantity:req.body.quantity
+
+  });
+  res.send('Got a POST request')
+//  console.log(req.body);
+   
+ })
+
  app.post('/remouveCards', (req, res)=> { 
  
   var id=ObjectID(req.body._id);
