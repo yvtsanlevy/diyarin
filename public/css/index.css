@@ -176,7 +176,7 @@ a {
 .main-s {
   height: 95vh;
   width: 100%;
-  background-image: linear-gradient(to right bottom, rgba(185, 181, 183, 0.459), rgba(115, 215, 245, 0.404)), url(../image/img/8.jpg);
+  background-image: linear-gradient(to right bottom, rgba(223, 238, 169, 0.767), rgba(248, 210, 106, 0.384));
   background-size: cover;
   background-position: top;
   position: relative;
@@ -903,7 +903,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #111;
+  background-color: rgba(20, 22, 22, 0.932);
   overflow-x: hidden;
   overflow: auto;
   padding-top: 20px;

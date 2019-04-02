@@ -46,7 +46,7 @@ app.use(session({
 }));
 
 app.get('/beed', (req, res)=> { 
- beeds.find().lean().exec( function (err, beddArray) {
+ beeds.find().sort('h').lean().exec( function (err, beddArray) {
   // if (err) console.log(err)
   // 	else app.send.json(beddArray)
   // console.log(beddArray);

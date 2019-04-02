@@ -46,7 +46,7 @@
 				<a href="#myDesing">	<img class="icon icon-paintlet" src="image/img/icon-paint.png"onclick="myDesing()" ></a>
 			</div>
 					
-					<header class="header-studio">
+					<!-- <header class="header-studio">
 						<div class="header__text-box">
 			<h1 class="heading-primary">
 				<span class="heading-primary--main">do it yourself</span>
@@ -54,7 +54,7 @@
 			</h1>
 
 		</div>
-	</header>
+	</header> -->
 <div class="main-s">
     <div class="text-con">
 	
@@ -68,7 +68,7 @@
 			  <!-- Tab content -->
 			  <div id="London" class="tabcontent">
 				<h3>בחירת תבנית</h3>
-				<p>לחצי על כפתו "דוגמאות" שבצד שמאל ובחרי  תבנית של שרשרת שממנה תתחילי לעצב </p>
+				<p>לחצי על כפתור "דוגמאות" שבצד שמאל ובחרי  תבנית של שרשרת שממנה תתחילי לעצב </p>
 			  </div>
 			  
 			  <div id="Paris" class="tabcontent">
@@ -135,29 +135,33 @@
 	</div>
 
 	<div class="popup" id="popup">
-			<div class="popup__content">
-				<div class="popup__left_s">
-						<div class="sidenav">
-								<button class="dropdown-btn">צבעים 
-										<i class="fa fa-caret-down"></i>
-									  </button>
-									  <div class="dropdown-container">
-										<a href="#">אדום</a>
-										<a href="#">כחול</a>
-										<a href="#">ירוק</a>
-										<a href="#">חום</a>
-										<a href="#">צהוב</a>
-										<a href="#">סגול</a>
-										<a href="#">אפור</a>
+		<div class="popup__content">
+			<div class="popup__left_s">
+				<div class="sidenav">
+					<button class="dropdown-btn"onclick="appendBeedCard(beeds)">הכל 
+										<!-- <i class="fa fa-caret-down"></i> -->
+					  </button>
+						<button class="dropdown-btn">צבעים 
+						<i class="fa fa-caret-down"></i>
+						  </button>
+						 <div class="dropdown-container">
+						<a class="sortBeeds" id="אדום" onclick="sortBeeds(beeds,id)">אדום</a>
+						<a class="sortBeeds" id="כחול"onclick="sortBeeds(beeds,id)" >כחול</a>
+										<a class="sortBeeds" id="ירוק" onclick="sortBeeds(beeds,id)">ירוק</a>
+										<a class="sortBeeds" id="חום"onclick="sortBeeds(beeds,id)" >חום</a>
+										<a class="sortBeeds" id="צהוב"onclick="sortBeeds(beeds,id)" >צהוב</a>
+										<a class="sortBeeds" id="ורוד"onclick="sortBeeds(beeds,id)" >ורוד</a>
+										<a class="sortBeeds" id="אפור"onclick="sortBeeds(beeds,id)" >אפור</a>
 									  </div>
 			  
 									  <button class="dropdown-btn">סגנון 
 											  <i class="fa fa-caret-down"></i>
 											</button>
 											<div class="dropdown-container">
-											  <a href="#">תליון</a>
-											  <a href="#">עגול</a>
-											  <a href="#">פוןפון</a>
+											  <a id="תליון"onclick="sortBeedsStyle(beeds,id)">תליון</a>
+											  <a id="משושה"onclick="sortBeedsStyle(beeds,id)">משושה</a>
+											  <a id="פונפון"onclick="sortBeedsStyle(beeds,id)">פונפון</a>
+											  <a id="רגיל"onclick="sortBeedsStyle(beeds,id)">רגיל</a>
 											</div>
 									  
 											
@@ -202,7 +206,7 @@
 </div>
 
 </div>
-	<footer class="footer">
+	<!-- <footer class="footer">
             <div class="footer__logo-box">
 
                 <picture class="footer__logo">
@@ -241,7 +245,7 @@
 				</p>
 			</div>
 		
-	</footer>
+	</footer> -->
 
 <script type="text/javascript" src="./js/load.js"></script>
 <script type="text/javascript" src="./js/libs/html2canvas.js"></script>

@@ -14,7 +14,7 @@ for (i = 0; i < dropdown.length; i++) {
     }
   });
 }
-
+var sortBeedsButon =document.getElementsByClassName("sortBeeds");
 var image= document.getElementsByClassName("img");
 var conteiner= document.getElementsByClassName("conteiner");
 
@@ -100,24 +100,51 @@ function appendCard(){
         itemCard.append(`<img src ="image/neck/${neckles[i].src}" width=23% higth=25% class="hover" id="myDesingArray" onclick="clickNeck(${i})"<style padding=1.6%>/>`);
         // itemCard.css("padding","2rem"); 
     }
+    
 }
-function appendBeedCard(){
+function appendBeedCard(array){
   itemCardBeed.empty();
    
-    for(var i=0;i<beeds.length;i++){
+    for(var i=0;i<array.length;i++){
         
-        itemCardBeed.append(`<div id="beeds"><img src ="image/beeds/${beeds[i].src}" width=80%  onclick=""<style padding=1.6%>/>
-        <h2> גודל: ${beeds[i].src}</h2>\
-        <h2> סגנון: ${beeds[i].style}</h2>\
-        <p><button onclick="changeBeed(${i},thisIndex,thisArray)">change bead</button></p>
+        itemCardBeed.append(`<div id="beeds"><img src ="image/beeds/${array[i].src}" width=80%  onclick=""<style padding=1.6%>/>
+        <h2>  ${(array[i].w)/2.5}X${(array[i].h)/2.5}:גודל</h2>\
+        
+        <p><button onclick="changeBeed(${i},thisIndex,thisArray,sortArray)">change bead</button></p>
         <p><button onclick="addBeedToNeck(${i},thisIndex,thisArray)">Add a bead</button></p></div>
 
-        `);
+        `)
+        
         // itemCard.css("padding","2rem"); 
     }
+  //   for(var i = 0;i<array.length;i++){
+  //     itemCardBeed.append(`		<div class="product">
+  //     <img src="${array[i].src}" alt="House 2" class="product__img">
+  //     <svg class="product__like">
+  //         <use xlink:href="img/sprite.svg#icon-heart-full"></use>
+  //     </svg>
+  //     <h5 class="product__name"> ${(array[i].w)/2.5}X${(array[i].h)/2.5}:גודל</h5>
+     
+  //     <div class="product__rooms">
+  //         <svg>
+  //             <use xlink:href="img/sprite.svg#icon-profile-male"></use>
+  //         </svg>
+  //         <p>${array[i].style}</p>
+  //     </div>
+  //     <div class="product__location">
+  //     <svg>
+  //         <use xlink:href="img/sprite.svg#icon-map-pin"></use>
+  //     </svg>
+  //     <p>מחיר</p>
+  // </div>
+  
+  //     <button class="btn product__btn" onclick="changeBeed(${i},thisIndex,thisArray,sortArray)">החלף חרוז</button>
+  //     <button class="btn product__btn" onclick="addBeedToNeck(${i},thisIndex,thisArray)">הוסף חרוז</button>
+  // </div>`)
+  //     }
 }
 // itemCard.click(`clickNeck(${neckles[i]})`);
-
+// <h2>  ${array[i].style}:סגנון</h2>\
 function clickNeck(i){
 clear();
 itemCard.empty();
@@ -458,8 +485,8 @@ function clear(){
     };
   }
   
-  function changeBeed(i,index,array){
-    var be= beeds[i];
+  function changeBeed(i,index,array,array2){
+    var be= array2[i];
     var x;
     x =(array.length-1)/2-index;
      
@@ -474,7 +501,7 @@ function clear(){
     placeBeads(newArray);
      var x = document.getElementById("popup");
      x.style.display = "none";
-    
+     sortArray=beeds;
   
   
   }
@@ -620,7 +647,7 @@ function myDesingArray(){
 function show() {
     modal.style.display = "none";
    
-    appendBeedCard();
+    appendBeedCard(beeds);
      var x = document.getElementById("popup");
      if (x.style.display = "none") {
          x.style.display = "block";
@@ -730,4 +757,32 @@ function updateNeck(i){
   // Show the current tab, and add an "active" class to the button that opened the tab
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
+}
+
+var sortArray=[];
+sortArray=beeds;
+function sortBeeds(array,id) {
+  var newArray=[];
+ 
+  for(i=0;i<array.length;i++){
+   if (array[i].color==id){
+    var b = new  beed(array[i].x,array[i].y,array[i].w,array[i].h,array[i].cy,array[i].r,array[i].src);
+     newArray.push(b)
+   }
+  }
+  sortArray=newArray;
+appendBeedCard(sortArray);
+}
+
+function sortBeedsStyle(array,id) {
+  var newArray=[];
+ 
+  for(i=0;i<array.length;i++){
+   if (array[i].style==id){
+    var b = new  beed(array[i].x,array[i].y,array[i].w,array[i].h,array[i].cy,array[i].r,array[i].src);
+     newArray.push(b)
+   }
+  }
+  sortArray=newArray;
+appendBeedCard(sortArray);
 }
